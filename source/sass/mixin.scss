@@ -3,3 +3,9 @@
   position: absolute;
   content: '';
 }
+
+@mixin pseudo-center {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%);
+}
