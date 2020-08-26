@@ -7,5 +7,5 @@ Thumbs.db
 *.psd
 *.ai
 *.pdf
-css/*.css
+source/css/*.css
 build

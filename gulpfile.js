@@ -8,27 +8,24 @@
 
 var gulp = require('gulp'),
     plumber = require('gulp-plumber'),
-    server = require('browser-sync'),
-    reload = server.reload,
+    server = require('browser-sync').create(),
     sass = require('gulp-sass'),
     minify = require('gulp-csso'),
     rename = require('gulp-rename'),
     autoprefixer = require('gulp-autoprefixer'),
     imagemin = require('gulp-imagemin'),
-    del = require('del'),
-    runsequence = require('run-sequence'); // плагин для последовательного выполнения задач
-
+    del = require('del');
 
 gulp.task('styles', function() { // стили, префиксер, минификация
-  gulp.src('source/sass/style.scss')
+  return gulp.src('source/sass/style.scss')
   .pipe(plumber())
   .pipe(sass())
-  .pipe(autoprefixer({ browsers: ('last 4 versions') }))
+  .pipe(autoprefixer({ overrideBrowserslist: ('last 4 versions') }))
   .pipe(gulp.dest('source/css'))
   .pipe(minify())
   .pipe(rename('style.min.css'))
   .pipe(gulp.dest('source/css'))
-  .pipe(reload({stream: true}));
+  .pipe(server.stream());
 });
 
 gulp.task('server', function() {  // запуск live-сервера
@@ -39,21 +36,16 @@ gulp.task('server', function() {  // запуск live-сервера
     notify: false
   });
 
-  gulp.watch("source/sass/**/*.scss,sass}", gulp.series("styles"));
+  gulp.watch("source/sass/**/*.{scss,sass}", gulp.series("styles"));
   gulp.watch("source/*.html", gulp.series("refresh"));
   gulp.watch("source/js/*.js", gulp.series("refresh"));
+  gulp.watch("source/img", gulp.series("refresh"));
 });
 
 // Сборка проекта
 
 gulp.task('css', function() {
-  return gulp.src('source/sass/style.scss')
-  .pipe(plumber())
-  .pipe(sass())
-  .pipe(autoprefixer({ overrideBrowserslist: ('last 4 versions') }))
-  .pipe(gulp.dest('build/css'))
-  .pipe(minify())
-  .pipe(rename('style.min.css'))
+  return gulp.src('source/css/style.min.css')
   .pipe(gulp.dest('build/css'))
 })
 
@@ -88,4 +80,4 @@ gulp.task('refresh', function (done) {
 });
 
 gulp.task('build', gulp.series('clean', 'html', 'css', 'js', 'fonts', 'img')) // запуск всех задач сборки
-gulp.task('watch', gulp.series('server', 'styles')) // отслеживание изменения в файлах и перезагрузка
+gulp.task('watch', gulp.series('server')) // отслеживание изменения в файлах и перезагрузка
