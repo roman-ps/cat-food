@@ -23,7 +23,7 @@ gulp.task('styles', function() { // стили, префиксер, минифи
   gulp.src('source/sass/style.scss')
   .pipe(plumber())
   .pipe(sass())
-  .pipe(autoprefixer({ browsers: ['last 4 versions'] }))
+  .pipe(autoprefixer({ browsers: ('last 4 versions') }))
   .pipe(gulp.dest('source/css'))
   .pipe(minify())
   .pipe(rename('style.min.css'))
@@ -31,22 +31,26 @@ gulp.task('styles', function() { // стили, префиксер, минифи
   .pipe(reload({stream: true}));
 });
 
-gulp.task('webserver', function(){  // запуск live-сервера
+gulp.task('server', function() {  // запуск live-сервера
   server.init({
     server: {
       baseDir: 'source/'
     },
     notify: false
   });
+
+  gulp.watch("source/sass/**/*.scss,sass}", gulp.series("styles"));
+  gulp.watch("source/*.html", gulp.series("refresh"));
+  gulp.watch("source/js/*.js", gulp.series("refresh"));
 });
 
 // Сборка проекта
 
 gulp.task('css', function() {
-  gulp.src('source/sass/style.scss')
+  return gulp.src('source/sass/style.scss')
   .pipe(plumber())
   .pipe(sass())
-  .pipe(autoprefixer({ browsers: ['last 4 versions'] }))
+  .pipe(autoprefixer({ overrideBrowserslist: ('last 4 versions') }))
   .pipe(gulp.dest('build/css'))
   .pipe(minify())
   .pipe(rename('style.min.css'))
@@ -54,36 +58,34 @@ gulp.task('css', function() {
 })
 
 gulp.task('html', function() {
-  gulp.src('source/*.html')
+  return gulp.src('source/*.html')
   .pipe(gulp.dest('build'));
 })
 
 gulp.task('img', function() {
-  gulp.src('source/img/*')
+  return gulp.src('source/img/*')
   .pipe(imagemin())
   .pipe(gulp.dest('build/img'));
 })
 
 gulp.task('fonts', function() {
-  gulp.src('source/fonts/*')
+  return gulp.src('source/fonts/*')
   .pipe(gulp.dest('build/fonts'));
 })
 
 gulp.task('js', function() {
-  gulp.src('source/js/main.js')
+  return gulp.src('source/js/main.js')
   .pipe(gulp.dest('build/js'));
 })
 
 gulp.task('clean', function() {
-  del('build');
+  return del('build');
 })
 
-gulp.task ('build', function(callback) { // запуск всех задач сборки
-  runsequence('clean', 'html', 'css', 'js', 'fonts', 'img', callback)
-})
-
-gulp.task ('watch', ['webserver', 'styles'], function() { // отслеживание изменения в файлах и перезагрузка
-  gulp.watch('source/sass/**/*.scss', ['styles']);
-  gulp.watch('source/*.html', server.reload);
-  gulp.watch('source/js/*.js', server.reload);
+gulp.task('refresh', function (done) {
+  server.reload();
+  done();
 });
+
+gulp.task('build', gulp.series('clean', 'html', 'css', 'js', 'fonts', 'img')) // запуск всех задач сборки
+gulp.task('watch', gulp.series('server', 'styles')) // отслеживание изменения в файлах и перезагрузка
