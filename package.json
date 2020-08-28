@@ -1,8 +1,8 @@
 {
-  "name": "gulp-project",
+  "name": "cat-food",
   "version": "1.1.0",
-  "description": "Шаблон проекта на Gulp",
-  "main": "index.js",
+  "description": "Ты сегодня покормил кота?",
+  "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "gulp build",
@@ -10,14 +10,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/roman-ps/gulp-project.git"
+    "url": "git+https://github.com/roman-ps/cat-food.git"
   },
   "author": "Roman PS",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/roman-ps/gulp-project/issues"
+    "url": "https://github.com/roman-ps/cat-food/issues"
   },
-  "homepage": "https://github.com/roman-ps/gulp-project#readme",
+  "homepage": "https://github.com/roman-ps/cat-food#readme",
   "devDependencies": {
     "gulp": "^4.0.2",
     "gulp-sass": "^4.0.2",
