@@ -103,6 +103,12 @@ body {
   background: $color-disable;
 }
 
+.catalog__list {
+  margin: 12px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
 .catalog__weight {
   @include pseudo;
   box-sizing: border-box;
@@ -134,7 +140,7 @@ body {
 .catalog__item-title {
   font-size: 48px;
   font-weight: 700;
-  margin: 17px 0 0;
+  margin: 10px 0 0;
 }
 
 .catalog__item-subtitle {
