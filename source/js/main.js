@@ -8,10 +8,10 @@ const SELECTED = {
   chicken: 'Филе из цыплят с трюфелями в бульоне',
 }
 
-const WEIGHTS = {
-  fuagra: '0,5',
-  fish: '2',
-  chicken: '5',
+const DEFAULT = {
+  fuagra: `Чего сидишь? Порадуй котэ, <span class="catalog__item-buy">купи.</span>`,
+  fish: `Чего сидишь? Порадуй котэ, <span class="catalog__item-buy">купи.</span>`,
+  chicken: `Чего сидишь? Порадуй котэ, <span class="catalog__item-buy">купи.</span>`,
 }
 
 const DISABLED = {
@@ -34,7 +34,7 @@ function clickHandle(evt) {
     } else
     if (thisParent.classList.contains("catalog__item--disabled")) {
       thisParent.classList.toggle("catalog__item--disabled");
-      outText.innerHTML = `Чего сидишь? Порадуй котэ, купи`;
+      outText.innerHTML = DEFAULT[outText.dataset.animal];
       outText.style.color = '#ffffff';
     } else {
       thisParent.classList.toggle("catalog__item--select")
