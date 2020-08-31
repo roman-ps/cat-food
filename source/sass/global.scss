@@ -38,9 +38,9 @@ body {
 
   &::before {
     @include pseudo;
-    left: -19px;
-    top: -15px;
-    width: 42px;
+    left: -22px;
+    top: -8px;
+    width: 60px;
     height: 30px;
     transform: rotate(-45deg);
     z-index: 1;
