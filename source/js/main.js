@@ -1,6 +1,9 @@
 'use strict';
 
 const CONTENT = document.querySelector(".content");
+const colorDefault = '#ffffff';
+const colorDisabled = '#ffff66';
+
 
 const SELECTED = {
   fuagra: 'Печень утки разварная с артишоками',
@@ -30,16 +33,16 @@ function clickHandle(evt) {
       thisParent.classList.toggle("catalog__item--select");
       thisParent.classList.add("catalog__item--disabled");
       outText.innerHTML = DISABLED[outText.dataset.animal];
-      outText.style.color = '#ffff66';
+      outText.style.color = colorDisabled;
     } else
     if (thisParent.classList.contains("catalog__item--disabled")) {
       thisParent.classList.toggle("catalog__item--disabled");
       outText.innerHTML = DEFAULT[outText.dataset.animal];
-      outText.style.color = '#ffffff';
+      outText.style.color = colorDefault;
     } else {
-      thisParent.classList.toggle("catalog__item--select")
+      thisParent.classList.toggle("catalog__item--select");
       outText.innerHTML = SELECTED[outText.dataset.animal];
-      outText.style.color = '#ffffff';
+      outText.style.color = colorDefault;
     }
   }
 }
