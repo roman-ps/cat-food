@@ -103,6 +103,11 @@ body {
   background: $color-disable;
 }
 
+.catalog__item--disabled  .overlay {
+  display: block;
+}
+
+
 .catalog__list {
   margin: 12px 0 0;
   padding: 0;
@@ -154,7 +159,7 @@ body {
   margin: 0;
 }
 
-.catalog__item-weight {
+.catalog__descript {
   @include pseudo;
   bottom: -30px;
   margin: 0;
@@ -165,13 +170,15 @@ body {
   color: #ffffff;
 }
 
-.testing1 {
-  background-color: green;
-}
-
 .overlay {
+  display: none;
   background-color: #ebebeb;
-  opacity: 0.95;
+  opacity: 0.5;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }
 
 
