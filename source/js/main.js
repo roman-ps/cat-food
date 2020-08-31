@@ -51,4 +51,9 @@ function clickHandle(evt) {
   }
 }
 
+function toggleTitle() {
+
+}
+
 CONTENT.addEventListener("click", clickHandle);
+CONTENT.addEventListener("mouseout", toggleTitle);
