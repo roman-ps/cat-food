@@ -29,7 +29,7 @@ body {
   box-sizing: border-box;
   width: 320px;
   height: 480px;
-  padding: 0 10px 0 47px;
+  padding: 0 5px;
   background: url("../img/cato.jpg") no-repeat #ffffff;
   background-position: bottom -100px center;
   border: 4px solid $color-default;
@@ -109,7 +109,7 @@ body {
 
 
 .catalog__list {
-  margin: 12px 0 0;
+  margin: 12px 0 0 42px;
   padding: 0;
   list-style: none;
 }
@@ -144,24 +144,25 @@ body {
 
 .catalog__item-text {
   font-size: 16px;
-  margin: 25px 0 0;
+  margin: 25px 0 0 42px;
 }
 
 .catalog__item-title {
   font-size: 48px;
   font-weight: 700;
-  margin: 6px 0 0;
+  margin: 6px 0 0 42px;
 }
 
 .catalog__item-subtitle {
   font-size: 24px;
   font-weight: 700;
-  margin: 0;
+  margin: 0 0 0 42px;
 }
 
 .catalog__descript {
   @include pseudo;
   bottom: -30px;
+  width: 100%;
   margin: 0;
   font-family: $font-trebuchet;
   font-size: 13px;
