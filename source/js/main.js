@@ -1,8 +1,12 @@
 'use strict';
 
 const CONTENT = document.querySelector(".content");
-const colorDefault = '#ffffff';
-const colorDisabled = '#ffff66';
+const COLOR_DEFAULT = '#ffffff';
+const COLOR_DISABLED = '#ffff66';
+const COLOR_SELECT_HOVER = '#e62e7a';
+const COLOR_ITEM_HOVER = '#000000';
+const TEXT_ITEM_DEFAULT = 'Сказочное заморское яство';
+const TEXT_ITEM_HOVER = 'Котэ не одобряет';
 let outputTexts = document.querySelectorAll(".catalog__descript");
 
 const SELECTED = {
@@ -37,23 +41,38 @@ function clickHandle(evt) {
       thisParent.classList.toggle("catalog__item--select");
       thisParent.classList.add("catalog__item--disabled");
       outText.innerHTML = DISABLED[outText.dataset.animal];
-      outText.style.color = colorDisabled;
+      outText.style.color = COLOR_DISABLED;
     } else
     if (thisParent.classList.contains("catalog__item--disabled")) {
       thisParent.classList.toggle("catalog__item--disabled");
       outText.innerHTML = DEFAULT[outText.dataset.animal];
-      outText.style.color = colorDefault;
+      outText.style.color = COLOR_DEFAULT;
     } else {
       thisParent.classList.toggle("catalog__item--select");
       outText.innerHTML = SELECTED[outText.dataset.animal];
-      outText.style.color = colorDefault;
+      outText.style.color = COLOR_DEFAULT;
     }
   }
 }
 
-function toggleTitle() {
+function mouseOutItem(evt) {
+  evt.preventDefault();
+  if (evt.target.classList.contains("catalog__item--select")) {
+    let text = evt.target.querySelector(".catalog__item-text");
+    text.innerHTML = TEXT_ITEM_HOVER;
+    text.style.color = COLOR_SELECT_HOVER;
+  }
+}
 
+function mouseOverItem(evt) {
+  evt.preventDefault();
+  if (evt.target.classList.contains("catalog__item--select")) {
+    let text = evt.target.querySelector(".catalog__item-text");
+    text.innerHTML = TEXT_ITEM_DEFAULT;
+    text.style.color = COLOR_ITEM_HOVER;
+  }
 }
 
 CONTENT.addEventListener("click", clickHandle);
-CONTENT.addEventListener("mouseout", toggleTitle);
+CONTENT.addEventListener("mouseout", mouseOutItem);
+CONTENT.addEventListener("mouseover", mouseOverItem);
