@@ -7,7 +7,7 @@ const COLOR_SELECT_HOVER = '#e62e7a';
 const COLOR_ITEM_HOVER = '#000000';
 const TEXT_ITEM_DEFAULT = 'Сказочное заморское яство';
 const TEXT_ITEM_HOVER = 'Котэ не одобряет';
-let outputTexts = document.querySelectorAll(".catalog__descript");
+const OUTPUT_TEXTS = document.querySelectorAll(".catalog__descript");
 
 const SELECTED = {
   fuagra: 'Печень утки разварная с артишоками',
@@ -27,7 +27,7 @@ const DISABLED = {
   chicken: 'Печалька, с курой закончился.',
 }
 
-for (let key of outputTexts) {
+for (let key of OUTPUT_TEXTS) {
   key.innerHTML = DEFAULT[key.dataset.animal];
 }
 
@@ -56,7 +56,6 @@ function clickHandle(evt) {
 }
 
 function mouseOutItem(evt) {
-  evt.preventDefault();
   if (evt.target.classList.contains("catalog__item--select")) {
     let text = evt.target.querySelector(".catalog__item-text");
     text.innerHTML = TEXT_ITEM_HOVER;
@@ -65,7 +64,6 @@ function mouseOutItem(evt) {
 }
 
 function mouseOverItem(evt) {
-  evt.preventDefault();
   if (evt.target.classList.contains("catalog__item--select")) {
     let text = evt.target.querySelector(".catalog__item-text");
     text.innerHTML = TEXT_ITEM_DEFAULT;
