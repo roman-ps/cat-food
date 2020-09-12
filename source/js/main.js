@@ -1,6 +1,90 @@
 'use strict';
 
-const CONTENT = document.querySelector(".content");
+const CATALOG = document.querySelector(".content__catalog");
+
+class Maincard {
+  constructor(text, title, subtitle, list1, list2, list3, quanty, unit, descr, animal) {
+    this.text = text,
+    this.title = title,
+    this.subtitle = subtitle,
+    this.list1 = list1,
+    this.list2 = list2,
+    this.list3 = list3,
+    this.quanty = quanty,
+    this.unit = unit,
+    this.descr = descr,
+    this.animal = animal
+  }
+
+  render() {
+    const NEW_CARD = document.createElement("li");
+    NEW_CARD.classList.add("catalog__item");
+    CATALOG.appendChild(NEW_CARD);
+    NEW_CARD.innerHTML = `
+    <div class="overlay"></div>
+    <p class="catalog__item-text">${this.text}</p>
+    <h2 class="catalog__item-title">${this.title}</h2>
+    <h3 class="catalog__item-subtitle">${this.subtitle}</h3>
+    <ul class="catalog__list">
+      <li class="catalog__list-item">${this.list1}</li>
+      <li class="catalog__list-item">${this.list2}</li>
+      <li class="catalog__list-item">${this.list3}</li>
+    </ul>
+    <div class="catalog__weight">
+      <div class="catalog__weight-quantity">${this.quanty}</div>
+      <div class="catalog__weight-unit">${this.unit}</div>
+    </div>
+    <p class="catalog__descript" data-animal="${this.animal}">${this.descr}</p>
+    `
+  }
+}
+
+
+let fuagra = new Maincard(
+  "Сказочное заморское яство",
+  "Нямушка",
+  "с фуа-гра",
+  "10 порций",
+  "мышь в подарок",
+  "",
+  "0,5",
+  "кг",
+  `Чего сидишь? Порадуй котэ, <span class="catalog__item-buy">купи.</span>`,
+  "fuagra"
+)
+
+  
+let fish = new Maincard(
+  "Сказочное заморское яство",
+  "Нямушка",
+  "с рыбой",
+  "40 порций",
+  "2 мышей в подарок",
+  "",
+  "2",
+  "кг",
+  `Чего сидишь? Порадуй котэ, <span class="catalog__item-buy">купи.</span>`,
+  "fish"
+)
+
+let chicken = new Maincard(
+  "Сказочное заморское яство",
+  "Нямушка",
+  "с курой",
+  "100 порций",
+  "5 мышей в подарок",
+  "Заказчик доволен",
+  "5",
+  "кг",
+  `Чего сидишь? Порадуй котэ, <span class="catalog__item-buy">купи.</span>`,
+  "chicken"
+)
+    
+fuagra.render()
+fish.render()
+chicken.render()
+
+/* const CONTENT = document.querySelector(".content");
 const COLOR_DEFAULT = '#ffffff';
 const COLOR_DISABLED = '#ffff66';
 const COLOR_SELECT_HOVER = '#e62e7a';
@@ -74,3 +158,4 @@ function mouseOverItem(evt) {
 CONTENT.addEventListener("click", clickHandle);
 CONTENT.addEventListener("mouseout", mouseOutItem);
 CONTENT.addEventListener("mouseover", mouseOverItem);
+ */

@@ -13,7 +13,7 @@
     <main class="content">
       <h1 class="content__title">Ты сегодня покормил кота?</h1>
       <ul class="content__catalog catalog">
-        <li class="catalog__item">
+       <!--  <li class="catalog__item">
           <div class="overlay"></div>
           <p class="catalog__item-text">Сказочное заморское яство</p>
           <h2 class="catalog__item-title">Нямушка</h2>
@@ -60,9 +60,28 @@
               <div class="catalog__weight-unit">кг</div>
             </div>
             <p class="catalog__descript" data-animal="chicken"></p>
-          </li>
+          </li> -->
         </ul>
     </main>
+
+    <template id="tmpl">
+      <li class="catalog__item">
+        <div class="overlay"></div>
+          <p class="catalog__item-text"></p>
+          <h2 class="catalog__item-title"></h2>
+          <h3 class="catalog__item-subtitle"></h3>
+          <ul class="catalog__list">
+            <li class="catalog__list-item"></li>
+            <li class="catalog__list-item"></li>
+            <li class="catalog__list-item"></li>
+          </ul>
+          <div class="catalog__weight">
+            <div class="catalog__weight-quantity"></div>
+            <div class="catalog__weight-unit"></div>
+          </div>
+          <p class="catalog__descript" data-animal="chicken"></p>
+        </li>
+    </template>
 
     <script src="js/main.js"></script>
   </body>
