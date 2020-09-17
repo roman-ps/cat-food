@@ -39,7 +39,6 @@ class Maincard {
   }
 }
 
-
 let fuagra = new Maincard(
   "Сказочное заморское яство",
   "Нямушка",
@@ -53,7 +52,6 @@ let fuagra = new Maincard(
   "fuagra"
 )
 
-  
 let fish = new Maincard(
   "Сказочное заморское яство",
   "Нямушка",
@@ -79,40 +77,30 @@ let chicken = new Maincard(
   `Чего сидишь? Порадуй котэ, <span class="catalog__item-buy">купи.</span>`,
   "chicken"
 )
-    
+
 fuagra.render()
 fish.render()
 chicken.render()
 
-/* const CONTENT = document.querySelector(".content");
-const COLOR_DEFAULT = '#ffffff';
-const COLOR_DISABLED = '#ffff66';
 const COLOR_SELECT_HOVER = '#e62e7a';
 const COLOR_ITEM_HOVER = '#000000';
 const TEXT_ITEM_DEFAULT = 'Сказочное заморское яство';
 const TEXT_ITEM_HOVER = 'Котэ не одобряет';
-const OUTPUT_TEXTS = document.querySelectorAll(".catalog__descript");
 
 const SELECTED = {
   fuagra: 'Печень утки разварная с артишоками',
   fish: 'Головы щучьи с чесноком да свежайшая сёмгушка',
   chicken: 'Филе из цыплят с трюфелями в бульоне',
 }
-
 const DEFAULT = {
   fuagra: `Чего сидишь? Порадуй котэ, <span class="catalog__item-buy">купи.</span>`,
   fish: `Чего сидишь? Порадуй котэ, <span class="catalog__item-buy">купи.</span>`,
   chicken: `Чего сидишь? Порадуй котэ, <span class="catalog__item-buy">купи.</span>`,
 }
-
 const DISABLED = {
   fuagra: 'Печалька, с фуа-гра закончился.',
   fish: 'Печалька, с рыбой закончился.',
   chicken: 'Печалька, с курой закончился.',
-}
-
-for (let key of OUTPUT_TEXTS) {
-  key.innerHTML = DEFAULT[key.dataset.animal];
 }
 
 function clickHandle(evt) {
@@ -125,16 +113,13 @@ function clickHandle(evt) {
       thisParent.classList.toggle("catalog__item--select");
       thisParent.classList.add("catalog__item--disabled");
       outText.innerHTML = DISABLED[outText.dataset.animal];
-      outText.style.color = COLOR_DISABLED;
     } else
     if (thisParent.classList.contains("catalog__item--disabled")) {
       thisParent.classList.toggle("catalog__item--disabled");
       outText.innerHTML = DEFAULT[outText.dataset.animal];
-      outText.style.color = COLOR_DEFAULT;
     } else {
       thisParent.classList.toggle("catalog__item--select");
       outText.innerHTML = SELECTED[outText.dataset.animal];
-      outText.style.color = COLOR_DEFAULT;
     }
   }
 }
@@ -155,7 +140,6 @@ function mouseOverItem(evt) {
   }
 }
 
-CONTENT.addEventListener("click", clickHandle);
-CONTENT.addEventListener("mouseout", mouseOutItem);
-CONTENT.addEventListener("mouseover", mouseOverItem);
- */
+CATALOG.addEventListener("click", clickHandle);
+CATALOG.addEventListener("mouseout", mouseOutItem);
+CATALOG.addEventListener("mouseover", mouseOverItem);
