@@ -92,16 +92,34 @@ body {
   }
 }
 
-.catalog__item  .catalog__weight {
-  background: $color-default;
+.catalog__item {
+
+  .catalog__weight {
+    background: $color-default;
+  }
+  .catalog__descript {
+    color: #ffffff;
+  }
 }
 
-.catalog__item--select  .catalog__weight {
-  background: $color-select;
+.catalog__item--select {
+
+  .catalog__weight {
+    background: $color-select;
+  }
+  .catalog__descript {
+    color: #ffffff;
+  }
 }
 
-.catalog__item--disabled  .catalog__weight {
-  background: $color-disable;
+.catalog__item--disabled {
+
+  .catalog__weight {
+    background: $color-disable;
+  }
+  .catalog__descript {
+    color: #ffff66;
+  }
 }
 
 .catalog__item--disabled  .overlay {
