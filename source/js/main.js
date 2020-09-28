@@ -1,8 +1,22 @@
 'use strict';
 
 const CATALOG = document.querySelector(".content__catalog");
+const REQUEST_URL = 'js/data.json';
+let content;
 
-class Maincard {
+async function getResponce() {
+  let responce = await fetch(REQUEST_URL);
+  let content = await responce.json();
+  let fuagraData = content.fuagra;
+  let fishData = content.fish;
+  let chickenData = content.chicken;
+  //let fishData = await responce.json();
+  //let chickenData = await responce.json();
+  console.log(fishData);
+}
+getResponce()
+
+class MainCard {
   constructor(text, title, subtitle, list1, list2, list3, quanty, unit, descr, animal) {
     this.text = text,
     this.title = title,
@@ -39,7 +53,7 @@ class Maincard {
   }
 }
 
-let fuagra = new Maincard(
+let fuagra = new MainCard(
   "Сказочное заморское яство",
   "Нямушка",
   "с фуа-гра",
@@ -52,7 +66,7 @@ let fuagra = new Maincard(
   "fuagra"
 )
 
-let fish = new Maincard(
+let fish = new MainCard(
   "Сказочное заморское яство",
   "Нямушка",
   "с рыбой",
@@ -65,7 +79,7 @@ let fish = new Maincard(
   "fish"
 )
 
-let chicken = new Maincard(
+let chicken = new MainCard(
   "Сказочное заморское яство",
   "Нямушка",
   "с курой",
@@ -87,7 +101,7 @@ const COLOR_ITEM_HOVER = '#000000';
 const TEXT_ITEM_DEFAULT = 'Сказочное заморское яство';
 const TEXT_ITEM_HOVER = 'Котэ не одобряет';
 
-const SELECTED = {
+/* const SELECTED = {
   fuagra: 'Печень утки разварная с артишоками',
   fish: 'Головы щучьи с чесноком да свежайшая сёмгушка',
   chicken: 'Филе из цыплят с трюфелями в бульоне',
@@ -101,7 +115,7 @@ const DISABLED = {
   fuagra: 'Печалька, с фуа-гра закончился.',
   fish: 'Печалька, с рыбой закончился.',
   chicken: 'Печалька, с курой закончился.',
-}
+} */
 
 function clickHandle(evt) {
   let child = evt.target;
@@ -112,14 +126,15 @@ function clickHandle(evt) {
     if (thisParent.classList.contains("catalog__item--select")) {
       thisParent.classList.toggle("catalog__item--select");
       thisParent.classList.add("catalog__item--disabled");
-      outText.innerHTML = DISABLED[outText.dataset.animal];
+      console.log(content)
+      outText.innerHTML = content[outText.dataset.animal.disabled];
     } else
     if (thisParent.classList.contains("catalog__item--disabled")) {
       thisParent.classList.toggle("catalog__item--disabled");
-      outText.innerHTML = DEFAULT[outText.dataset.animal];
+      outText.innerHTML = content[outText.dataset.animal.default1];
     } else {
       thisParent.classList.toggle("catalog__item--select");
-      outText.innerHTML = SELECTED[outText.dataset.animal];
+      outText.innerHTML = content[outText.dataset.animal.selected];
     }
   }
 }
@@ -143,3 +158,4 @@ function mouseOverItem(evt) {
 CATALOG.addEventListener("click", clickHandle);
 CATALOG.addEventListener("mouseout", mouseOutItem);
 CATALOG.addEventListener("mouseover", mouseOverItem);
+document.addEventListener("DOMContentLoaded", getResponce)
