@@ -1,16 +1,16 @@
 {
   "fuagra": {
-    "default1": "`Чего сидишь? Порадуй котэ, <span class=catalog__item-buy>купи.</span>`",
+    "default": "Чего сидишь? Порадуй котэ, <span class=catalog__item-buy>купи.</span>",
     "selected": "Печень утки разварная с артишоками",
     "disabled": "Печалька, с фуа-гра закончился."
   },
   "fish": {
-    "default1": "`Чего сидишь? Порадуй котэ, <span class=catalog__item-buy>купи.</span>`",
+    "default": "Чего сидишь? Порадуй котэ, <span class=catalog__item-buy>купи.</span>",
     "selected": "Головы щучьи с чесноком да свежайшая сёмгушка",
     "disabled": "Печалька, с рыбой закончился."
   },
   "chicken": {
-    "default1": "`Чего сидишь? Порадуй котэ, <span class=catalog__item-buy>купи.</span>`",
+    "default": "Чего сидишь? Порадуй котэ, <span class=catalog__item-buy>купи.</span>",
     "selected": "Филе из цыплят с трюфелями в бульоне",
     "disabled": "Печалька, с курой закончился."
   }

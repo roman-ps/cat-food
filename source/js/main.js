@@ -2,19 +2,16 @@
 
 const CATALOG = document.querySelector(".content__catalog");
 const REQUEST_URL = 'js/data.json';
-let content;
+let content = {};
 
 async function getResponce() {
   let responce = await fetch(REQUEST_URL);
-  let content = await responce.json();
+  content = await responce.json();
   let fuagraData = content.fuagra;
   let fishData = content.fish;
   let chickenData = content.chicken;
-  //let fishData = await responce.json();
-  //let chickenData = await responce.json();
-  console.log(fishData);
+  console.log(content.fish.disabled);
 }
-getResponce()
 
 class MainCard {
   constructor(text, title, subtitle, list1, list2, list3, quanty, unit, descr, animal) {
@@ -33,6 +30,7 @@ class MainCard {
   render() {
     const NEW_CARD = document.createElement("li");
     NEW_CARD.classList.add("catalog__item");
+    NEW_CARD.setAttribute("data-animal", `${this.animal}`)
     CATALOG.appendChild(NEW_CARD);
     NEW_CARD.innerHTML = `
     <div class="overlay"></div>
@@ -101,40 +99,24 @@ const COLOR_ITEM_HOVER = '#000000';
 const TEXT_ITEM_DEFAULT = 'Сказочное заморское яство';
 const TEXT_ITEM_HOVER = 'Котэ не одобряет';
 
-/* const SELECTED = {
-  fuagra: 'Печень утки разварная с артишоками',
-  fish: 'Головы щучьи с чесноком да свежайшая сёмгушка',
-  chicken: 'Филе из цыплят с трюфелями в бульоне',
-}
-const DEFAULT = {
-  fuagra: `Чего сидишь? Порадуй котэ, <span class="catalog__item-buy">купи.</span>`,
-  fish: `Чего сидишь? Порадуй котэ, <span class="catalog__item-buy">купи.</span>`,
-  chicken: `Чего сидишь? Порадуй котэ, <span class="catalog__item-buy">купи.</span>`,
-}
-const DISABLED = {
-  fuagra: 'Печалька, с фуа-гра закончился.',
-  fish: 'Печалька, с рыбой закончился.',
-  chicken: 'Печалька, с курой закончился.',
-} */
-
 function clickHandle(evt) {
   let child = evt.target;
   let parent = evt.currentTarget;
   let thisParent = child.closest(".catalog__item");
+  let attrParent = thisParent.dataset.animal;
   let outText = thisParent.querySelector(".catalog__descript");
   if (child != parent && !child.classList.contains("catalog__descript")) {
     if (thisParent.classList.contains("catalog__item--select")) {
       thisParent.classList.toggle("catalog__item--select");
       thisParent.classList.add("catalog__item--disabled");
-      console.log(content)
-      outText.innerHTML = content[outText.dataset.animal.disabled];
+      outText.innerHTML = content[attrParent]["disabled"];
     } else
     if (thisParent.classList.contains("catalog__item--disabled")) {
       thisParent.classList.toggle("catalog__item--disabled");
-      outText.innerHTML = content[outText.dataset.animal.default1];
+      outText.innerHTML = content[attrParent]["default"];
     } else {
       thisParent.classList.toggle("catalog__item--select");
-      outText.innerHTML = content[outText.dataset.animal.selected];
+      outText.innerHTML = content[attrParent]["selected"];
     }
   }
 }
