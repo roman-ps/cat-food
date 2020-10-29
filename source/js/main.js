@@ -7,10 +7,6 @@ let content = {};
 async function getResponce() {
   let responce = await fetch(REQUEST_URL);
   content = await responce.json();
-  let fuagraData = content.fuagra;
-  let fishData = content.fish;
-  let chickenData = content.chicken;
-  console.log(content.fish.disabled);
 }
 
 class MainCard {
@@ -46,7 +42,7 @@ class MainCard {
       <div class="catalog__weight-quantity">${this.quanty}</div>
       <div class="catalog__weight-unit">${this.unit}</div>
     </div>
-    <p class="catalog__descript" data-animal="${this.animal}">${this.descr}</p>
+    <p class="catalog__descript">${this.descr}</p>
     `
   }
 }
@@ -90,9 +86,9 @@ let chicken = new MainCard(
   "chicken"
 )
 
-fuagra.render()
-fish.render()
-chicken.render()
+fuagra.render();
+fish.render();
+chicken.render();
 
 const COLOR_SELECT_HOVER = '#e62e7a';
 const COLOR_ITEM_HOVER = '#000000';
@@ -122,18 +118,21 @@ function clickHandle(evt) {
 }
 
 function mouseOutItem(evt) {
-  if (evt.target.classList.contains("catalog__item--select")) {
+  if (evt.target.closest("catalog__item--select") || evt.target.classList.contains("catalog__item--select")) {
     let text = evt.target.querySelector(".catalog__item-text");
     text.innerHTML = TEXT_ITEM_HOVER;
-    text.style.color = COLOR_SELECT_HOVER;
+    text.classList.toggle("catalog__item-text--red");
   }
 }
 
 function mouseOverItem(evt) {
-  if (evt.target.classList.contains("catalog__item--select")) {
+  console.log('Evt.target = ', evt.target);
+  console.log('Evt.relatedTarget = ', evt.relatedTarget);
+  if (evt.target.classList.contains("catalog__item--select") || evt.target.closest("catalog__item--select") && evt.relatedTarget.contains("content__catalog")) {
+  //if ((evt.target.classList.contains("catalog__item--select") || evt.target.closest("catalog__item--select")) || (evt.target.classList.contains("catalog__item-select") && (evt.relatedTarget.classList.contains("content__catalog")))) {
     let text = evt.target.querySelector(".catalog__item-text");
     text.innerHTML = TEXT_ITEM_DEFAULT;
-    text.style.color = COLOR_ITEM_HOVER;
+    text.classList.toggle("catalog__item-text--red");
   }
 }
 
