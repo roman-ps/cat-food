@@ -4,7 +4,6 @@ import './card.js';
 
 const handleDataSuccess = (data) => {
   savingData(data);
-  console.log(saveData[1]);
 }
 
 
