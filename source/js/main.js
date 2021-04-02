@@ -1,8 +1,27 @@
-'use strict';
+import {saveData, savingData} from './store.js';
+import {loadData} from './api.js';
+import './card.js';
+
+const handleDataSuccess = (data) => {
+  savingData(data);
+  console.log(saveData[1]);
+}
+
+
+const handlePageLoaded = () => {
+  loadData()
+  .then(handleDataSuccess)
+};
+
+
+document.addEventListener("DOMContentLoaded", handlePageLoaded);
+
+
 
 const CATALOG = document.querySelector(".content__catalog");
 const REQUEST_URL = 'js/data.json';
 let content = {};
+
 
 async function getResponce() {
   let responce = await fetch(REQUEST_URL);
@@ -119,6 +138,7 @@ function clickHandle(evt) {
 
 function mouseOutItem(evt) {
   if (evt.target.closest("catalog__item--select") || evt.target.classList.contains("catalog__item--select")) {
+
     let text = evt.target.querySelector(".catalog__item-text");
     text.innerHTML = TEXT_ITEM_HOVER;
     text.classList.toggle("catalog__item-text--red");
@@ -126,10 +146,8 @@ function mouseOutItem(evt) {
 }
 
 function mouseOverItem(evt) {
-  console.log('Evt.target = ', evt.target);
-  console.log('Evt.relatedTarget = ', evt.relatedTarget);
   if (evt.target.classList.contains("catalog__item--select") || evt.target.closest("catalog__item--select") && evt.relatedTarget.contains("content__catalog")) {
-  //if ((evt.target.classList.contains("catalog__item--select") || evt.target.closest("catalog__item--select")) || (evt.target.classList.contains("catalog__item-select") && (evt.relatedTarget.classList.contains("content__catalog")))) {
+
     let text = evt.target.querySelector(".catalog__item-text");
     text.innerHTML = TEXT_ITEM_DEFAULT;
     text.classList.toggle("catalog__item-text--red");
