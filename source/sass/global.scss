@@ -176,12 +176,6 @@ body {
   margin: 6px 0 0 42px;
 }
 
-.catalog__item-type {
-  font-size: 24px;
-  font-weight: 700;
-  margin: 0 0 0 42px;
-}
-
 .catalog__descript {
   @include pseudo;
   bottom: -30px;
@@ -203,6 +197,12 @@ body {
   bottom: 0;
   left: 0;
   right: 0;
+}
+
+.catalog__item-type {
+  font-size: 24px;
+  font-weight: 700;
+  margin: 0 0 0 42px;
 }
 
 
