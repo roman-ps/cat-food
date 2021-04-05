@@ -5,7 +5,16 @@ import {fillCard} from './card.js';
 const CATALOG = document.querySelector(".content__catalog");
 const TEXT_ITEM_DEFAULT = 'Сказочное заморское яство';
 const TEXT_ITEM_HOVER = 'Котэ не одобряет';
-const STATE_MAX_COUNT = 3;
+const StateNumber = {
+  1: 'catalog__item',
+  2: 'catalog__item catalog__item--select',
+  3: 'catalog__item catalog__item--disabled',
+};
+
+const State = {
+  MAX_COUNT: Object.keys(StateNumber).length,
+  START_COUNT: 1,
+};
 
 const renderCard = () => {
   for (let i = 0; i < saveData.length; i++) {
@@ -23,38 +32,21 @@ const handlePageLoadedSuccess = () => {
   .then(handleDataLoadSuccess)
 };
 
-const StateNumber = {
-  1: 'catalog__item',
-  2: 'catalog__item catalog__item--select',
-  3: 'catalog__item catalog__item--disabled',
-};
-
 const cardClickHandler = (evt) => {
   const item = evt.target.closest('.catalog__item');
-
+  
   item.dataset.state++;
-
-  if (item.dataset.state > STATE_MAX_COUNT) {
-    item.dataset.state = 1;
+  if (item.dataset.state > State.MAX_COUNT) {
+    item.dataset.state = State.START_COUNT;
   };
   item.className = StateNumber[item.dataset.state];
 };
 
-// const cardClickHandler = (evt) => {
-//   const item = evt.target.closest('.catalog__item');
-//   let state = item.getAttribute('data-state');
-
-//   state++;
-//   item.dataset.state = state;
-//   if (state > STATE_MAX_COUNT) {
-//     state = 1;
-//     item.dataset.state = state;
-//   };
-//   item.className = StateNumber[item.dataset.state];
-// };
-
 const cardMouseOutHandler = (evt) => {
-  // console.log(evt.target)
+  console.log(evt.currentTarget)
+  if (evt.currentTarget.classList.contains('content__catalog')) {
+
+  }
 
 }
 
