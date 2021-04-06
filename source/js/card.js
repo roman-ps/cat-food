@@ -10,7 +10,21 @@ const CardSelectors = {
   QUANTITY: '.catalog__weight-quantity',
   UNIT: '.catalog__weight-unit',
   DESCRIPTION: '.catalog__descript',
-  BUY: '.catalog__item-buy', 
+  BUY: '.catalog__item-buy',
+};
+
+const fillFeatures = (features, data) => {
+  const feature = features.querySelector('.catalog__feature');
+  const fragment = document.createDocumentFragment();
+
+  for (let i = 0; i < data.length; i++) {
+    const clone = feature.cloneNode();
+    clone.textContent = data[i];
+    fragment.appendChild(clone);
+  }
+
+  features.removeChild(feature);
+  features.appendChild(fragment);
 }
 
 
@@ -22,7 +36,7 @@ const fillCard = (data) => {
   TEXT.textContent = data.text;
   TITLE.textContent = data.title;
   TYPE.textContent = data.type;
-  FEATURES.textContent = data.features;
+  fillFeatures(FEATURES, data.features);
   QUANTITY.textContent = data.quantity;
   UNIT.textContent = data.unit;
   DESCRIPTION.textContent = data.description[0];
