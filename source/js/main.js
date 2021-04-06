@@ -34,7 +34,7 @@ const handlePageLoadedSuccess = () => {
 
 const cardClickHandler = (evt) => {
   const item = evt.target.closest('.catalog__item');
-  
+
   item.dataset.state++;
   if (item.dataset.state > State.MAX_COUNT) {
     item.dataset.state = State.START_COUNT;

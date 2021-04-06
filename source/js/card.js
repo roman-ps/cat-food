@@ -9,7 +9,7 @@ const CardSelectors = {
   FEATURES: '.catalog__features',
   QUANTITY: '.catalog__weight-quantity',
   UNIT: '.catalog__weight-unit',
-  DESCRIPTION: '.catalog__descript',
+  DESCRIPTIONS: '.catalog__descript',
   BUY: '.catalog__item-buy',
 };
 
@@ -25,13 +25,17 @@ const fillFeatures = (features, data) => {
 
   features.removeChild(feature);
   features.appendChild(fragment);
+};
+
+const addDescription = (descriptions, data) => {
+  console.log(descriptions)
 }
 
 
 const fillCard = (data) => {
   const card = CARD_TEMPLATE.content.cloneNode(true);
   const cardNode = getNodes(card, CardSelectors);
-  const {TEXT, TITLE, TYPE, FEATURES, QUANTITY, UNIT, DESCRIPTION, BUY} = cardNode;
+  const {TEXT, TITLE, TYPE, FEATURES, QUANTITY, UNIT, DESCRIPTIONS, BUY} = cardNode;
 
   TEXT.textContent = data.text;
   TITLE.textContent = data.title;
@@ -39,7 +43,8 @@ const fillCard = (data) => {
   fillFeatures(FEATURES, data.features);
   QUANTITY.textContent = data.quantity;
   UNIT.textContent = data.unit;
-  DESCRIPTION.textContent = data.description[0];
+  DESCRIPTIONS.textContent = data.description[0];
+  addDescription(DESCRIPTIONS, data)
   BUY.textContent = data.buy;
 
   return card;
