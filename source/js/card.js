@@ -9,10 +9,15 @@ const CardSelectors = {
   FEATURES: '.catalog__features',
   QUANTITY: '.catalog__weight-quantity',
   UNIT: '.catalog__weight-unit',
-  DESCRIPTIONS: '.catalog__descript',
-  BUY: '.catalog__item-buy',
+  DESCRIPTIONS: '.catalog__description',
 };
 
+/**
+ * Заполняем особенности каждый карточки
+ *
+ * @param {*} features - узел в который добавляем особенности
+ * @param {*} data - сохраненные с бэка данные
+ */
 const fillFeatures = (features, data) => {
   const feature = features.querySelector('.catalog__feature');
   const fragment = document.createDocumentFragment();
@@ -28,14 +33,18 @@ const fillFeatures = (features, data) => {
 };
 
 const addDescription = (descriptions, data) => {
+  const item = descriptions.querySelector('.catalog__description-text');
   console.log(descriptions)
-}
+  console.log(item)
 
+  const clone = item.cloneNode();
+  item.textContent = data[0];
+}
 
 const fillCard = (data) => {
   const card = CARD_TEMPLATE.content.cloneNode(true);
   const cardNode = getNodes(card, CardSelectors);
-  const {TEXT, TITLE, TYPE, FEATURES, QUANTITY, UNIT, DESCRIPTIONS, BUY} = cardNode;
+  const {TEXT, TITLE, TYPE, FEATURES, QUANTITY, UNIT, DESCRIPTIONS} = cardNode;
 
   TEXT.textContent = data.text;
   TITLE.textContent = data.title;
@@ -43,9 +52,8 @@ const fillCard = (data) => {
   fillFeatures(FEATURES, data.features);
   QUANTITY.textContent = data.quantity;
   UNIT.textContent = data.unit;
-  DESCRIPTIONS.textContent = data.description[0];
-  addDescription(DESCRIPTIONS, data)
-  BUY.textContent = data.buy;
+  // DESCRIPTIONS.textContent = data.description[0];
+  addDescription(DESCRIPTIONS, data.description)
 
   return card;
 }

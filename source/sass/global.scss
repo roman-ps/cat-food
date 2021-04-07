@@ -160,8 +160,7 @@ body {
   font-size: 21px;
 }
 
-.catalog__item-buy {
-  color: $color-default;
+.catalog__description-text {
   border-bottom: 1px dashed $color-default;
 }
 
@@ -176,7 +175,7 @@ body {
   margin: 6px 0 0 42px;
 }
 
-.catalog__descript {
+.catalog__description {
   @include pseudo;
   bottom: -30px;
   width: 100%;
