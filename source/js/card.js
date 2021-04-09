@@ -34,12 +34,10 @@ const fillFeatures = (features, data) => {
 
 const addDescription = (descriptions, data) => {
   const item = descriptions.querySelector('.catalog__description-text');
-  console.log(descriptions)
-  console.log(item)
 
   const clone = item.cloneNode();
   item.textContent = data[0];
-}
+};
 
 const fillCard = (data) => {
   const card = CARD_TEMPLATE.content.cloneNode(true);
@@ -52,10 +50,9 @@ const fillCard = (data) => {
   fillFeatures(FEATURES, data.features);
   QUANTITY.textContent = data.quantity;
   UNIT.textContent = data.unit;
-  // DESCRIPTIONS.textContent = data.description[0];
   addDescription(DESCRIPTIONS, data.description)
 
   return card;
-}
+};
 
 export {fillCard}
