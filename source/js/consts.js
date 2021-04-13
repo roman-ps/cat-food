@@ -10,11 +10,17 @@ const StateNumber = {
 /**
  * Cоответсвие цвета к карточкам StateNumber
  */
-const TextColor = {
-  1: '#ffffff',
-  2: '#d91667',
-  3: '#ffff00',
+const Colors = {
+  "WHITE": '#ffffff',
+  "PINK": '#d91667',
+  "YELLOW": '#ffff00',
 };
+
+const CardColorsState = {
+  DEFAULT: Colors.WHITE,
+  SELECTED: Colors.PINK,
+  DISABLED: Colors.YELLOW,
+}
 
 const State = {
   // MAX_COUNT: Object.keys(StateNumber).length, не выебываться?
@@ -22,4 +28,4 @@ const State = {
   MAX_COUNT: 3,
 };
 
-export {StateNumber, TextColor, State}
+export {StateNumber, CardColorsState, State}

@@ -1,7 +1,7 @@
 import {saveData, savingData} from './store.js';
 import {loadData} from './api.js';
 import {fillCard} from './card.js';
-import {StateNumber, TextColor, State} from './consts.js';
+import {StateNumber, CardColorsState, State} from './consts.js';
 
 const CATALOG = document.querySelector(".content__catalog");
 
