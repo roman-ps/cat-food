@@ -36,7 +36,7 @@ const addDescription = (descriptions, data) => {
   const item = descriptions.querySelector('.catalog__description-text');
 
   const clone = item.cloneNode();
-  item.textContent = data[0];
+  item.textContent = data.default;
 };
 
 const fillCard = (data) => {
