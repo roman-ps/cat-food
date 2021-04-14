@@ -131,7 +131,7 @@ body {
 }
 
 
-.catalog__list {
+.catalog__features {
   margin: 12px 0 0 42px;
   padding: 0;
   list-style: none;
@@ -160,8 +160,7 @@ body {
   font-size: 21px;
 }
 
-.catalog__item-buy {
-  color: $color-default;
+.catalog__description-text {
   border-bottom: 1px dashed $color-default;
 }
 
@@ -176,13 +175,7 @@ body {
   margin: 6px 0 0 42px;
 }
 
-.catalog__item-subtitle {
-  font-size: 24px;
-  font-weight: 700;
-  margin: 0 0 0 42px;
-}
-
-.catalog__descript {
+.catalog__description {
   @include pseudo;
   bottom: -30px;
   width: 100%;
@@ -203,6 +196,12 @@ body {
   bottom: 0;
   left: 0;
   right: 0;
+}
+
+.catalog__item-type {
+  font-size: 24px;
+  font-weight: 700;
+  margin: 0 0 0 42px;
 }
 
 
