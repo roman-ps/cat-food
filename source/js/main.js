@@ -1,7 +1,7 @@
 import {savingData} from './store.js';
 import {loadData} from './api.js';
 import {fillCard} from './card.js';
-import {StateNumber, CardColorsState, State} from './consts.js';
+import {StateNumber, ListCardColors, State} from './consts.js';
 
 const CATALOG = document.querySelector(".content__catalog");
 
@@ -24,14 +24,14 @@ const handlePageLoadedSuccess = () => {
 const cardClickHandler = (evt) => {
   const item = evt.target.closest('.catalog__item');
   const description = item.querySelector('.catalog__description-text');
-  console.log(CardColorsState);
+
   item.dataset.state++;
-  console.log(CardColorsState[item.dataset.state])
+
   if (item.dataset.state > State.MAX_COUNT) {
     item.dataset.state = State.START_COUNT;
-    description.style.color = CardColorsState[item.dataset.state];
+    description.style.color = ListCardColors[item.dataset.state];
   };
-  description.style.color = CardColorsState[item.dataset.state];
+  description.style.color = ListCardColors[item.dataset.state];
   item.className = StateNumber[item.dataset.state];
 };
 

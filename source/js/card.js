@@ -50,7 +50,7 @@ const fillCard = (data) => {
   fillFeatures(FEATURES, data.features);
   QUANTITY.textContent = data.quantity;
   UNIT.textContent = data.unit;
-  addDescription(DESCRIPTIONS, data.description)
+  addDescription(DESCRIPTIONS, data.description);
 
   return card;
 };

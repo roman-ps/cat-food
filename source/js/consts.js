@@ -8,9 +8,9 @@ const CardClassState = {
 };
 
 const StateNumber = {
-  1: CardClassState.DEFAULT,
-  2: CardClassState.SELECTED,
-  3: CardClassState.DISABLED,
+  0: CardClassState.DEFAULT,
+  1: CardClassState.SELECTED,
+  2: CardClassState.DISABLED,
 };
 
 /**
@@ -26,11 +26,17 @@ const CardColorsState = {
   DEFAULT: Colors.WHITE,
   SELECTED: Colors.PINK,
   DISABLED: Colors.YELLOW,
-}
-
-const State = {
-  MAX_COUNT: Object.keys(Colors).length,
-  START_COUNT: 1,
 };
 
-export {StateNumber, CardColorsState, CardClassState, State}
+const ListCardColors = [
+  CardColorsState.DEFAULT,
+  CardColorsState.SELECTED,
+  CardColorsState.DISABLED,
+];
+
+const State = {
+  MAX_COUNT: Object.keys(Colors).length - 1,
+  START_COUNT: 0,
+};
+
+export {StateNumber, ListCardColors, CardClassState, State}
