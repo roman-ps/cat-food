@@ -1,19 +1,25 @@
 /**
  * Соответствие классов к разным состояниям карточек
  */
+const CardClassState = {
+  DEFAULT: 'catalog__item',
+  SELECTED: 'catalog__item catalog__item--select',
+  DISABLED: 'catalog__item catalog__item--disabled',
+};
+
 const StateNumber = {
-  1: 'catalog__item',
-  2: 'catalog__item catalog__item--select',
-  3: 'catalog__item catalog__item--disabled',
+  1: CardClassState.DEFAULT,
+  2: CardClassState.SELECTED,
+  3: CardClassState.DISABLED,
 };
 
 /**
  * Cоответсвие цвета к карточкам StateNumber
  */
 const Colors = {
-  "WHITE": '#ffffff',
-  "PINK": '#d91667',
-  "YELLOW": '#ffff00',
+  WHITE: '#ffffff',
+  PINK: '#d91667',
+  YELLOW: '#ffff00',
 };
 
 const CardColorsState = {
@@ -23,9 +29,8 @@ const CardColorsState = {
 }
 
 const State = {
-  // MAX_COUNT: Object.keys(StateNumber).length, не выебываться?
+  MAX_COUNT: Object.keys(Colors).length,
   START_COUNT: 1,
-  MAX_COUNT: 3,
 };
 
-export {StateNumber, CardColorsState, State}
+export {StateNumber, CardColorsState, CardClassState, State}

@@ -4,4 +4,4 @@ const savingData = (data) => {
   saveData = data;
 };
 
-export {saveData, savingData}
+export {savingData}
