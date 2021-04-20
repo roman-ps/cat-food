@@ -7,11 +7,11 @@ const CardClassState = {
   DISABLED: 'catalog__item catalog__item--disabled',
 };
 
-const StateNumber = {
-  0: CardClassState.DEFAULT,
-  1: CardClassState.SELECTED,
-  2: CardClassState.DISABLED,
-};
+const StateNumber = [
+  CardClassState.DEFAULT,
+  CardClassState.SELECTED,
+  CardClassState.DISABLED,
+];
 
 /**
  * Cоответствие цвета к состоянию карточки товара

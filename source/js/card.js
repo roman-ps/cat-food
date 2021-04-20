@@ -22,11 +22,11 @@ const fillFeatures = (features, data) => {
   const feature = features.querySelector('.catalog__feature');
   const fragment = document.createDocumentFragment();
 
-  for (let i = 0; i < data.length; i++) {
+  data.forEach((elem) => {
     const clone = feature.cloneNode();
-    clone.textContent = data[i];
+    clone.textContent = elem;
     fragment.appendChild(clone);
-  }
+  })
 
   features.removeChild(feature);
   features.appendChild(fragment);

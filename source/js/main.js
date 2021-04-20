@@ -1,7 +1,7 @@
 import {savingData} from './store.js';
 import {loadData} from './api.js';
 import {fillCard} from './card.js';
-import {StateNumber, ListCardColors, State} from './consts.js';
+import {events} from './events.js';
 
 const CATALOG = document.querySelector(".content__catalog");
 
@@ -14,27 +14,12 @@ const renderCard = (data) => {
 const handleDataLoadSuccess = (data) => {
   savingData(data);
   renderCard(data);
+  events();
 };
 
-const handlePageLoadedSuccess = () => {
+const handlePageLoaded = () => {
   loadData()
   .then(handleDataLoadSuccess)
 };
 
-const cardClickHandler = (evt) => {
-  const item = evt.target.closest('.catalog__item');
-  const description = item.querySelector('.catalog__description-text');
-
-  item.dataset.state++;
-
-  if (item.dataset.state > State.MAX_COUNT) {
-    item.dataset.state = State.START_COUNT;
-    description.style.color = ListCardColors[item.dataset.state];
-  };
-  description.style.color = ListCardColors[item.dataset.state];
-  item.className = StateNumber[item.dataset.state];
-};
-
-
-CATALOG.addEventListener("click", cardClickHandler);
-document.addEventListener("DOMContentLoaded", handlePageLoadedSuccess);
+handlePageLoaded();
