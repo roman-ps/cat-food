@@ -1,5 +1,5 @@
 /**
- * Соответствие классов к разным состояниям карточек
+ * Соответствие классов к разным состояниям карточки
  */
 const CardClassState = {
   DEFAULT: 'catalog__item',
@@ -14,7 +14,7 @@ const StateNumber = {
 };
 
 /**
- * Cоответсвие цвета к карточкам StateNumber
+ * Cоответствие цвета к состоянию карточки товара
  */
 const Colors = {
   WHITE: '#ffffff',
@@ -28,6 +28,10 @@ const CardColorsState = {
   DISABLED: Colors.YELLOW,
 };
 
+/**
+ * Для изменения цветов по кругу при клике по карточке
+ * Используется в ф-ии cardClickHandler
+ */
 const ListCardColors = [
   CardColorsState.DEFAULT,
   CardColorsState.SELECTED,
@@ -35,7 +39,7 @@ const ListCardColors = [
 ];
 
 const State = {
-  MAX_COUNT: Object.keys(Colors).length - 1,
+  MAX_COUNT: StateNumber.length - 1,
   START_COUNT: 0,
 };
 
