@@ -1,7 +1,14 @@
-let saveData = null;
+const MAX_CARD_COUNT = 10;
 
-const savingData = (data) => {
-  saveData = data;
+let rawData = null;
+
+const storeData = (data) => {
+  if (data.length > MAX_CARD_COUNT) {
+    data = data.slice(0, MAX_CARD_COUNT)
+  }
+  rawData = data;
+
+  return rawData;
 };
 
-export {savingData}
+export {storeData}
